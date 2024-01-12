@@ -19,7 +19,7 @@ function App() {
   const [cards, setCards] = useState(initialCards);
   const [bestScore, setBestScore] = useState(0);
   const [score, setScore] = useState(0);
-  let gameState = 'over';
+  const [gameState, setGameState] = useState('new');
 
   const shuffleCards = () => {
     const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
@@ -48,38 +48,36 @@ function App() {
   }
 
   const handleClick = (clickedCard) => {
+    if (gameState === 'win') {
+      alert('You WON, one more game?');
+      return
+    }
     if (gameState === 'lost') {
       alert('you Lost, start a New Game');
-      return;
-    } else if (gameState === 'win') {
-      alert('You WON, one more game?');
-      return;
-    } else if (gameState === 'over') {
-      alert('start a new game');
-      return;
-    }
+      return
+    } 
     if (clickedCard.clicked) {
       gameOver();
     } else if (!clickedCard.clicked) {
       clickedCard.clicked = true;
       shuffleCards();
       adjustScore();
-    } 
+    }
   };
 
   const gameOver = () => {
-    gameState = 'lost';
+    setGameState('lost');
     alert('you lost');
   }
 
   const gameWin = () => {
-    gameState = 'win';
+    setGameState('win');
     alert('you WIN!!')
   }
 
   const resetGame = () => {
     setScore(0);
-    gameState = 'over';
+    setGameState('new');
     cards.forEach(card => card.clicked = false)
     shuffleCards();
   }
