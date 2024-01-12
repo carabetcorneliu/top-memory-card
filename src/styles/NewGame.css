@@ -1,0 +1,14 @@
+.newGameContainer {
+  display: flex;
+  justify-content: end;
+}
+
+.newGame {
+  padding: 10px 50px;
+  border-radius: 20%;
+}
+
+.newGame:hover {
+  border: 2px solid white;
+  transform: scale(1.01);
+}

@@ -1,6 +1,22 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  margin: 0 auto;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1fr, 300px));
+  grid-template-rows: auto auto;
+  grid-auto-flow: column dense;
+  gap: 25px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header > * {
+  flex: 1 1 33%;
 }
